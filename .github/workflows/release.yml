@@ -23,7 +23,6 @@ jobs:
       META_FLOAT_STORE_PASSWORD: ${{ secrets.META_FLOAT_STORE_PASSWORD }}
       META_FLOAT_KEY_ALIAS: ${{ secrets.META_FLOAT_KEY_ALIAS }}
       META_FLOAT_KEY_PASSWORD: ${{ secrets.META_FLOAT_KEY_PASSWORD }}
-      META_FLOAT_KEYSTORE_FILE: ${{ runner.temp }}/metafloat-release.jks
 
     steps:
       - name: Checkout tag
@@ -45,6 +44,10 @@ jobs:
 
       - name: Grant Gradle permission
         run: chmod +x gradlew
+
+      - name: Set temporary keystore path
+        shell: bash
+        run: echo "META_FLOAT_KEYSTORE_FILE=$RUNNER_TEMP/metafloat-release.jks" >> "$GITHUB_ENV"
 
       - name: Validate release tag and signing secrets
         shell: bash
