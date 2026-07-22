@@ -6,7 +6,7 @@
 
 ### 新增
 
-- 支持连接 mihomo HTTP/HTTPS 控制器并打开 Zashboard。
+- 支持连接 HTTP/HTTPS 控制器并打开 Zashboard。
 - 支持实时上传、下载和累计流量悬浮窗。
 - 支持浅色、深色和跟随系统主题。
 - 支持 Direct GitHub、ghfast、gh-proxy、Fastly jsDelivr 和自定义下载镜像。
@@ -22,4 +22,3 @@
 ### 兼容性说明
 
 - 最低系统版本为 Android 8.0（API 26）。
-- v1.0.0 是第一版正式签名版本，Debug/测试签名版本需要卸载后重新安装。
