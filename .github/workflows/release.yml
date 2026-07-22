@@ -94,10 +94,12 @@ jobs:
           BUILD_TOOLS=$(find "$ANDROID_HOME/build-tools" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -n 1)
           "$BUILD_TOOLS/apksigner" verify --verbose "$SOURCE_APK"
 
+          EXPECTED_VERSION_NAME=$(sed -n 's/^[[:space:]]*versionName = "\([^"]*\)"/\1/p' app/build.gradle.kts)
+          EXPECTED_VERSION_CODE=$(sed -n 's/^[[:space:]]*versionCode = \([0-9]*\)/\1/p' app/build.gradle.kts)
           BADGING=$("$BUILD_TOOLS/aapt" dump badging "$SOURCE_APK" | head -n 1)
           echo "$BADGING" | grep -F "package: name='com.meta.float'"
-          echo "$BADGING" | grep -F "versionCode='100'"
-          echo "$BADGING" | grep -F "versionName='1.0.0'"
+          echo "$BADGING" | grep -F "versionCode='${EXPECTED_VERSION_CODE}'"
+          echo "$BADGING" | grep -F "versionName='${EXPECTED_VERSION_NAME}'"
 
           mkdir -p release
           TARGET_APK="release/MetaFloat-v${VERSION}.apk"
