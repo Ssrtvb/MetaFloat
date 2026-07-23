@@ -41,11 +41,11 @@ class TrafficReconnectPolicyTest {
     }
 
     @Test
-    fun frameTimeout_startsAtTenSecondsWithoutAValidFrame() {
+    fun frameTimeout_startsAtFiveSecondsWithoutAValidFrame() {
         val policy = TrafficReconnectPolicy()
 
-        assertFalse(policy.hasFrameTimedOut(5_000L, 14_999L))
-        assertTrue(policy.hasFrameTimedOut(5_000L, 15_000L))
+        assertFalse(policy.hasFrameTimedOut(5_000L, 9_999L))
+        assertTrue(policy.hasFrameTimedOut(5_000L, 10_000L))
     }
 
     @Test

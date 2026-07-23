@@ -14,7 +14,6 @@ class AppContainer(context: Context) {
         .connectTimeout(10, TimeUnit.SECONDS)
         .readTimeout(15, TimeUnit.SECONDS)
         .writeTimeout(15, TimeUnit.SECONDS)
-        .pingInterval(20, TimeUnit.SECONDS)
         .build()
 
     val settingsRepository: SettingsRepository = SettingsRepository(appContext)

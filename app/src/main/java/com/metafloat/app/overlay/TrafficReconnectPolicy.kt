@@ -7,7 +7,7 @@ internal class TrafficReconnectPolicy(
     private val baseDelayMillis: Long = 1_000L,
     private val multiplier: Double = 1.5,
     private val maximumDelayMillis: Long = 30_000L,
-    val frameTimeoutMillis: Long = 10_000L,
+    val frameTimeoutMillis: Long = 5_000L,
 ) {
     var consecutiveFailureCount: Int = 0
         private set

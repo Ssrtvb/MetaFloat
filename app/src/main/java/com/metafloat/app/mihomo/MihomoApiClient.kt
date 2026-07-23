@@ -38,13 +38,8 @@ class MihomoApiClient(
     fun observeTraffic(config: ControllerConnectionConfig): Flow<TrafficSample> = callbackFlow {
         val request = requestBuilder(config, config.websocketUrl("traffic"))
             .build()
-        var socket: WebSocket? = null
 
-        socket = client.newWebSocket(request, object : WebSocketListener() {
-            override fun onOpen(webSocket: WebSocket, response: Response) {
-                // The server keeps pushing JSON snapshots.
-            }
-
+        val socket = client.newWebSocket(request, object : WebSocketListener() {
             override fun onMessage(webSocket: WebSocket, text: String) {
                 try {
                     val json = JSONObject(text)
@@ -72,7 +67,7 @@ class MihomoApiClient(
         })
 
         awaitClose {
-            socket?.cancel()
+            socket.cancel()
         }
     }
 
