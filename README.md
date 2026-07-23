@@ -45,4 +45,4 @@ Debug APK 位于 `app/build/outputs/apk/debug/`，Release APK 位于 `app/build/
 
 ## 许可证
 
-MetaFloat 源代码采用 [GNU General Public License v3.0](LICENSE) 发布。第三方组件分别遵循各自许可证。
+MetaFloat 源代码采用 [GNU General Public License v3.0](LICENSE) 发布。
